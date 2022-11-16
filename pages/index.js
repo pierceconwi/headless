@@ -2,29 +2,26 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import { getSortedList } from '../lib/data';
-import { getSortedList2 } from '../lib/data';
 import Link from 'next/link';
 import Layout from '../components/layout.js';
 
 export async function getStaticProps() {
-  const firstData = getSortedList();
-  const secondData = getSortedList2();
+  const allData = await getSortedList();
   return {
     props: {
-      firstData,
-      secondData
+      allData
     }
   };
 }
 
-export default function Home({ firstData }) {
+export default function Home({ allData }) {
   return (
     <Layout>
-    <h1>People Food</h1>
-    <p>version 0.5.5</p>
+    <h1>CS55.13: Headless</h1>
+    <p>version 1.0.5</p>
     <p>by Pierce Conwi</p>
     <div>
-      {firstData.map(({ id, name }) => (
+      {allData.map(({ id, name }) => (
         <Link key={id} href={`/pmc-pages/${id}`}>
               <a className="list-group-item list-group-item-action">{name}</a>
         </Link>
