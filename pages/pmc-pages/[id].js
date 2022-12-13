@@ -35,9 +35,12 @@ export default function Entry( { itemData } ) {
     return (
         <main class="card col-6">
             <div class="card-body">
-                <h5 class="card-title">{itemData.post_title}</h5>
-                <p>{itemData.post_date}</p>
+                <h3 class="card-title">{itemData.post_title}</h3>
+                <h4><i>by {itemData.user_login}</i></h4>
+                <h6>First version of post data (regex)</h6>
                 <p>{cleanedPost}</p>
+                <h6>Second version of post data (dangerouslySetInnerHTML):</h6>
+                <div className="card-text" dangerouslySetInnerHTML={ {__html: itemData.post_content} } />
 
             </div>
                     <a class="btn btn-primary mt-3" href='../'>Back to Home</a>
